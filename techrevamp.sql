@@ -17,6 +17,7 @@ CREATE TABLE Users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
     first_name VARCHAR(255) NOT NULL,
     last_name VARCHAR(255) NOT NULL,
+    phone VARCHAR(30) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     is_logged_in BOOLEAN DEFAULT FALSE
@@ -44,7 +45,7 @@ CREATE TABLE Order_Products (
 -- Tabla Carrito de compras (relación 1 a 1 con Usuarios)
 CREATE TABLE Shopping_Carts (
     cart_id INT PRIMARY KEY AUTO_INCREMENT,
-    user_id INT UNIQUE,  -- Un usuario solo puede tener un carrito
+    user_id INT UNIQUE, 
     creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
@@ -94,13 +95,13 @@ CREATE TABLE Reviews (
 );
 
 -- Insertando datos en la tabla Users
-INSERT INTO Users (user_id, first_name, last_name, email, password)
+INSERT INTO Users (user_id, first_name, last_name, phone, email, password)
 VALUES
-(1, 'Gabriela', 'Rojas', 'gabriela@example.com', 'password123'),
-(2, 'Nicole', 'Rojas', 'nicole@example.com', 'securepass'),
-(3, 'Arturo', 'Navas', 'arturo@example.com', 'contraseña123'),
-(4, 'Giovanny', 'Salcedo', 'giovanny@example.com', 'password456'),
-(5, 'usuarios', 'test', 'test@example.com', 'segur0');
+(1, 'Gabriela', 'Rojas', 3003003030, 'gabriela@example.com', 'password123'),
+(2, 'Nicole', 'Rojas', 3003013131, 'nicole@example.com', 'securepass'),
+(3, 'Arturo', 'Navas', 3003023232, 'arturo@example.com', 'contraseña123'),
+(4, 'Giovanny', 'Salcedo', 3003033333, 'giovanny@example.com', 'password456'),
+(5, 'usuarios', 'test', 3003043434, 'test@example.com', 'segur0');
 
 -- Insertando datos en la tabla Products
 INSERT INTO Products (product_id, name, description, price, category)
